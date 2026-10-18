@@ -15,7 +15,7 @@ from sklearn.metrics import confusion_matrix, precision_recall_curve, roc_curve
 
 import core
 
-AUTHOR = "Prénom NOM"            # <-- À MODIFIER avec vos coordonnées
+AUTHOR = "Sahar Elloumi"            # <-- À MODIFIER avec vos coordonnées
 try:
     API_URL = os.getenv("API_URL") or st.secrets["API_URL"]
 except Exception:
