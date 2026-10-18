@@ -16,13 +16,16 @@ from sklearn.metrics import confusion_matrix, precision_recall_curve, roc_curve
 import core
 
 AUTHOR = "Prénom NOM"            # <-- À MODIFIER avec vos coordonnées
-API_URL = os.getenv("API_URL", "http://localhost:8000")
+try:
+    API_URL = os.getenv("API_URL") or st.secrets["API_URL"]
+except Exception:
+    API_URL = "http://localhost:8000"
 POS, NEG = "panne", "pas de panne"
 REF = "Modèle de référence pré-entraîné (API)"
 PAGES = ["Accueil", "Données", "Exploration", "Préparation", "Modélisation",
          "Comparaison", "Évaluation", "Prédiction", "Explainable AI"]
 
-st.set_page_config(page_title="Maintenance prédictive", page_icon="🛠️", layout="wide")
+st.set_page_config(page_title="Projet Challenge 1", page_icon="👩🏻‍💼", layout="wide")
 st.markdown("""<style>
 .banner{background:linear-gradient(135deg,#1b3a57,#2d5a80);padding:2.2rem 2.5rem;
 border-radius:14px;margin-bottom:1.2rem}.banner h1{margin:0;color:white}
@@ -69,7 +72,7 @@ def cm_fig(y, p, thr, title=""):
 
 
 # ------------------------------------------------------------------ Barre latérale
-st.sidebar.title("Maintenance prédictive")
+st.sidebar.title("Projet Challenge 1")
 page = st.sidebar.radio("Navigation", PAGES, key="page", label_visibility="collapsed")
 st.sidebar.divider()
 st.sidebar.metric("Modèles en session", len(ss.models), border=True)
